@@ -7,10 +7,7 @@ declare global {
        * Custom command to navigate without reloading the entire application like cy.visit() would.
        * @example cy.navigate('/salesman/auctions')
        */
-      navigate(
-        url: string | UrlTree,
-        extras?: NavigationBehaviorOptions | undefined
-      ): Chainable<boolean>;
+      navigate(url: string | UrlTree, extras?: NavigationBehaviorOptions | undefined): Chainable<boolean>;
 
       /**
        * Custom command to change viewport to mobile size.
@@ -22,11 +19,7 @@ declare global {
        * Custom command to get an HTMLElement by it's `data-cy` attribute following the `{feature}--{context}` pattern.
        * @example cy.getByDataCy('auction-creation', 'vin-input')
        */
-      getByDataCy(
-        feature: string,
-        context: string,
-        args?: Partial<Loggable & Timeoutable & Withinable & Shadow>
-      ): Chainable<JQuery<HTMLElement>>;
+      getByDataCy(feature: string, context: string, args?: Partial<Loggable & Timeoutable & Withinable & Shadow>): Chainable<JQuery<HTMLElement>>;
     }
   }
 }

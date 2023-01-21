@@ -10,10 +10,7 @@ import { VIEWPORT } from 'cypress.variables';
 
 declare global {
   interface Window {
-    navigateByUrl(
-      url: string | UrlTree,
-      extras?: NavigationBehaviorOptions | undefined
-    ): Promise<boolean>;
+    navigateByUrl(url: string | UrlTree, extras?: NavigationBehaviorOptions | undefined): Promise<boolean>;
   }
 }
 
@@ -27,13 +24,6 @@ Cypress.Commands.add('mobileView', () => {
   cy.viewport(VIEWPORT.mobile.width, VIEWPORT.mobile.height);
 });
 
-Cypress.Commands.add(
-  'getByDataCy',
-  (
-    feature: string,
-    context: string,
-    args?: Partial<Loggable & Timeoutable & Withinable & Shadow>
-  ) => {
-    return cy.get(`[data-cy=${feature}--${context}]`, args);
-  }
-);
+Cypress.Commands.add('getByDataCy', (feature: string, context: string, args?: Partial<Loggable & Timeoutable & Withinable & Shadow>) => {
+  return cy.get(`[data-cy=${feature}--${context}]`, args);
+});
