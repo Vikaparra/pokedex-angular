@@ -1,0 +1,6 @@
+{
+  "mock-user": {
+    "name": "mockName",
+    "pass": "mockPass"
+  }
+}

@@ -84,6 +84,34 @@
           "options": {
             "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "base-project:serve",
+            "configFile": "cypress.config.ts",
+            "browser": "chrome",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "base-project:serve:production"
+            }
+          }
+        },
+        "e2e-ci": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "base-project:serve",
+            "configFile": "cypress-ci.config.ts",
+            "browser": "chrome"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "base-project:serve:production"
+            }
+          }
         }
       }
     }
