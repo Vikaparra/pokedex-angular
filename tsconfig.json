@@ -19,7 +19,8 @@
     "module": "ES2022",
     "useDefineForClassFields": false,
     "lib": ["ES2022", "dom"],
-    "suppressImplicitAnyIndexErrors": true
+    "suppressImplicitAnyIndexErrors": true,
+    "paths": {}
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
