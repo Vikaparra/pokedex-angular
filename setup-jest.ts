@@ -1,6 +1,7 @@
 import 'jest-preset-angular/setup-jest';
+import { format } from 'util';
 
-/* global mocks for jsdom */
+// /* global mocks for jsdom */
 const mock = () => {
   let storage: { [key: string]: string } = {};
   return {
@@ -42,6 +43,13 @@ Object.defineProperty(document.body.style, 'transform', {
     };
   },
 });
+
+const error = global.console.error;
+// makes test suite fail if there is any console errors on it
+global.console.error = (...args) => {
+  error(...args);
+  throw new Error(format(...args));
+};
 
 /* output shorter and more meaningful Zone error stack traces */
 // Error.stackTraceLimit = 2;
