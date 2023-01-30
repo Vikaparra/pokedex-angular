@@ -1,4 +1,16 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npx prettier --write . && ng lint && git update-index --again
+# checks for staged files that could be prettified, files that were either added, copied, modified or renamed
+FILES=$(git diff --cached --name-only --diff-filter=ACMR | sed 's| |\\ |g')
+
+# if no files are found, it just exists with 0
+[ -z "$FILES" ] && exit 0
+
+# passes all found files to prettier --write command ignoring files unknown to prettier
+echo "$FILES" | xargs ./node_modules/.bin/prettier --ignore-unknown --write
+
+# adds the changes and fixes made in the files on staging to be commited
+echo "$FILES" | xargs git add
+
+exit 0
