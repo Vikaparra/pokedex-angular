@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+ng lint
+
 # checks for staged files that could be prettified, files that were either added, copied, modified or renamed
 FILES=$(git diff --cached --name-only --diff-filter=ACMR | sed 's| |\\ |g')
 
